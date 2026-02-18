@@ -175,6 +175,9 @@ Create multiple dashboards using the same script with different filters:
 
 Each dashboard reads its own configuration independently!
 
+## 📋 Changelog
+ - See the [CHANGELOG](CHANGELOG.md) file in this repository
+
 ## 🔧 Troubleshooting
 
 ### Widget not displaying?

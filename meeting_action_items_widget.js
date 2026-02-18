@@ -191,7 +191,12 @@ async function loadActionItems() {
     
     // Add additional criteria if specified
     if (CONFIG.additionalCriteria && CONFIG.additionalCriteria.trim() !== "") {
-        searchQuery += ` and ${CONFIG.additionalCriteria}`;
+        // Check if the criteria contains OR - if so, wrap in parentheses
+        const criteriaToAdd = CONFIG.additionalCriteria.toUpperCase().includes(' OR ') 
+            ? `(${CONFIG.additionalCriteria})`
+            : CONFIG.additionalCriteria;
+        
+        searchQuery += ` and ${criteriaToAdd}`;
         // console.log('Added additional criteria to query');
         
         // DEBUG: Test the additional criteria alone
@@ -208,7 +213,7 @@ async function loadActionItems() {
         // console.log('No additional criteria to add (empty or null)');
     }
     
-    // console.log(`Final search query: ${searchQuery}`);
+    console.log(`Final search query: ${searchQuery}`);
     
     // Search for all notes using the template with unchecked checkboxes
     const notes = await api.searchForNotes(searchQuery);
@@ -589,8 +594,12 @@ function attachEventListeners() {
         }
     });
     
-    // Handle refresh button (both top and bottom)
-    api.$container.find('.refreshActionItems, #refreshActionItems').on('click', function() {
+    // Handle refresh button (both top and bottom) - use delegation for better reliability
+    api.$container.off('click', '.refreshActionItems, #refreshActionItems');
+    api.$container.on('click', '.refreshActionItems, #refreshActionItems', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Refresh button clicked!');
         renderWidget();
     });
 }

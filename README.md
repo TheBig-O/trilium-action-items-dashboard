@@ -96,10 +96,10 @@ That's it! This will show all action items from notes using the `_meetingTemplat
 
 Add these optional labels to customize:
 
-#### `#template=<template_name>`
+#### `#tmpl=<template_name>`
 Specifies which template to search for.
 - Default: `_meetingTemplate`
-- Example: `#template=_projectTemplate`
+- Example: `#tmpl=_projectTemplate`
 
 #### `#additionalCriteria=<search_query>`
 Additional Trilium search criteria to filter results.
@@ -117,7 +117,7 @@ Shows all unchecked items from notes using `_meetingTemplate`.
 ### Example 2: Only 2025 Meetings
 ```
 ~renderNote=<script_noteId>
-#template=_meetingTemplate
+#tmpl=_meetingTemplate
 #additionalCriteria=note.dateCreated >= '2025' and note.dateCreated < '2026'
 ```
 
@@ -142,7 +142,7 @@ Shows all unchecked items from notes using `_meetingTemplate`.
 ### Example 6: Project Notes with Specific Category
 ```
 ~renderNote=<script_noteId>
-#template=_projectTemplate
+#tmpl=_projectTemplate
 #additionalCriteria="#category=Development"
 ```
 

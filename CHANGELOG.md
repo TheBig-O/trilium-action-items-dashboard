@@ -1,5 +1,9 @@
 ## 📋 Changelog
 
+### v1.2 (February 2026)
+**Implementation Fix:**
+- Changed the part of the script that looks for the `#template` attribute to `#tmpl` since `#template` creates templates in new note options.
+
 ### v1.1 (February 2026)
 **Bug Fixes:**
 - Fixed OR logic in `#additionalCriteria` - now automatically wraps OR statements in parentheses
